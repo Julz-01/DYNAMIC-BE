@@ -7,8 +7,8 @@ export class UserInfoController {
     constructor(private userInfoService: UserInfoService) { }
 
     @Post()
-    async create(@Body() body: CreateUserInfoDto) {
-        return await this.userInfoService.create(body);
+    create(@Body() body: CreateUserInfoDto) {
+        return  this.userInfoService.create(body);
     }
 
     @Get()
