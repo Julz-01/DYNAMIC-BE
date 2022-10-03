@@ -54,6 +54,17 @@ export class UserInfoService {
         // })
     }
 
+    update(createUserInfoDto: CreateUserInfoDto) {
+        const dtoData = createUserInfoDto;
+        dtoData.userInfo.forEach(val => {
+            this.prisma.userInfo.updateMany({
+                where: { userId: val['userId'], userFieldId: val['userFieldId'] },
+                data: { value: val['value'] }
+            })
+        });
+
+    }
+
     async findMany() {
         return await this.prisma.userInfo.findMany({
             where: { userId: 1 }
